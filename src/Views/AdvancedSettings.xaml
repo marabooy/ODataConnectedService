@@ -10,6 +10,9 @@
              d:DataContext="{d:DesignInstance Type=viewModels:AdvancedSettingsViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="500">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </UserControl.Resources>
     <StackPanel>
         <StackPanel x:Name="SettingsPanel" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="150">
             <TextBlock x:Name="ReferenceFileNameLabel" Text="Enter the file name (without extension):"
@@ -52,6 +55,29 @@
             		HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0, 15" FontWeight="Medium"/>
                 <CheckBox x:Name="OpenGeneratedFilesInIDE" Content="Open generated files in the IDE when generation completes." IsChecked="{Binding OpenGeneratedFilesInIDE}"
                     HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0, 5"/>
+
+                <CheckBox x:Name="IncludeWebProxy" Content="Include WebProxy" IsChecked="{Binding IncludeWebProxy}"
+                          HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0, 15" FontWeight="Medium"/>
+                <StackPanel
+                    Visibility="{Binding Path=IsChecked, ElementName=IncludeWebProxy, Converter={StaticResource BooleanToVisibilityConverter}}">
+
+                    <StackPanel Orientation="Horizontal">
+                        <TextBox x:Name="Host" Text="{Binding Host}"
+                             HorizontalAlignment="Left" TextWrapping="Wrap" Width="250" Margin="0, 5, 0, 0"/>
+                        <TextBox x:Name="Port" Text="{Binding Port}"
+                             HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="50" Margin="10, 5, 0, 0"/>
+                    </StackPanel>
+                    <StackPanel
+                    Visibility="{Binding Path=IsChecked, ElementName=IncludeWebProxy, Converter={StaticResource BooleanToVisibilityConverter}}">
+                        <CheckBox x:Name="ByPassLocal" Content="Bypass Local Addresses" IsChecked="{Binding ByPassLocal}"
+                              HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0, 15" FontWeight="Medium"/>
+                        <TextBlock x:Name="ByPassListLabel" Text="Enter URL's that should be Bypassed: (separated by a semi colon)"
+                               HorizontalAlignment="Left" Margin="0, 5, 0, 5"/>
+                        <TextBox x:Name="ByPassList" Text="{Binding ByPassList}"
+                             HorizontalAlignment="Left" AcceptsReturn="True" TextWrapping="Wrap" VerticalAlignment="Bottom" Width="250" Height="50"/>
+                    </StackPanel>
+                </StackPanel>
+
             </StackPanel>
 
         </StackPanel>

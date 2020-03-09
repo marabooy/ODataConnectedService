@@ -21,6 +21,16 @@ namespace Microsoft.OData.ConnectedService.ViewModels
         public bool OpenGeneratedFilesInIDE { get; set; }
 
 
+        public bool IncludeWebProxy { get; set; }
+
+        public bool ByPassLocal { get; set; }
+
+        public string Host { get; set; }
+
+        public string ByPassList { get; set; }
+
+        public int Port { get; set; }
+
         public AdvancedSettingsViewModel() : base()
         {
             this.Title = "Settings";
@@ -58,9 +68,12 @@ namespace Microsoft.OData.ConnectedService.ViewModels
             this.EnableNamingAlias = false;
             this.GeneratedFileName = Common.Constants.DefaultReferenceFileName;
             this.IncludeT4File = false;
+            this.IncludeWebProxy = false;
             MakeTypesInternal = false;
             this.OpenGeneratedFilesInIDE = false;
-          
+            Host = Common.Constants.DefaultHost;
+            Port = Common.Constants.DefaultPort;
+            ByPassList = Common.Constants.DefaultByPassList;
         }
     }
 }

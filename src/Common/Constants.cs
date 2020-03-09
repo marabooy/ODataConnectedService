@@ -37,6 +37,10 @@ namespace Microsoft.OData.ConnectedService.Common
 
         public const string DefaultReferenceFileName = "Reference";
         public const string DefaultServiceName = "OData Service";
+
+        internal static readonly string DefaultHost="example.com";
+        internal static readonly int DefaultPort=80;
+        internal static readonly string DefaultByPassList="example.com;odata.net";
         public static string[] V3NuGetPackages = new string[]
         {
             V3ClientNuGetPackage,

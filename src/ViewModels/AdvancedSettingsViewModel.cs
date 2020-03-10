@@ -23,13 +23,14 @@ namespace Microsoft.OData.ConnectedService.ViewModels
 
         public bool IncludeWebProxy { get; set; }
 
-        public bool ByPassLocal { get; set; }
-
         public string Host { get; set; }
 
-        public string ByPassList { get; set; }
+        public bool IncludeWebProxyNetworkCredentials { get; set; }
 
-        public int Port { get; set; }
+        public string NetworkCredentialsUsername { get; set; }
+        public string NetworkCredentialsPassword{ get; set; }
+
+        public string NetworkCredentialsDomain { get; set; }
 
         public AdvancedSettingsViewModel() : base()
         {
@@ -71,9 +72,11 @@ namespace Microsoft.OData.ConnectedService.ViewModels
             this.IncludeWebProxy = false;
             MakeTypesInternal = false;
             this.OpenGeneratedFilesInIDE = false;
-            Host = Common.Constants.DefaultHost;
-            Port = Common.Constants.DefaultPort;
-            ByPassList = Common.Constants.DefaultByPassList;
+            Host = null;
+            IncludeWebProxyNetworkCredentials = false;
+            NetworkCredentialsUsername = null;
+            NetworkCredentialsDomain = null;
+            NetworkCredentialsPassword = null;
         }
     }
 }

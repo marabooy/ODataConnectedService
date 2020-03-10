@@ -22,6 +22,8 @@ namespace Microsoft.OData.ConnectedService.Models
         public string WebProxyNetworkCredentialsUsername { get; set; }
         public string WebProxyNetworkCredentialsPassword { get; set; }
         public string WebProxyNetworkCredentialsDomain { get; set; }
+        public string Host { get; set; }
+
     }
 
     internal class ServiceConfigurationV4 : ServiceConfiguration

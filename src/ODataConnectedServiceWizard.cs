@@ -95,6 +95,14 @@ namespace Microsoft.OData.ConnectedService
                         advancedSettingsViewModel.UseDataServiceCollection = serviceConfig.UseDataServiceCollection;
 
 
+                        advancedSettingsViewModel.IncludeWebProxy = serviceConfig.IncludeWebProxy;
+                        advancedSettingsViewModel.Host = serviceConfig.Host;
+
+                        advancedSettingsViewModel.IncludeWebProxyNetworkCredentials = serviceConfig.IncludeWebProxyNetworkCredentials;
+                        advancedSettingsViewModel.NetworkCredentialsUsername = serviceConfig.WebProxyNetworkCredentialsUsername;
+                        advancedSettingsViewModel.NetworkCredentialsPassword = serviceConfig.WebProxyNetworkCredentialsPassword;
+                        advancedSettingsViewModel.NetworkCredentialsDomain = serviceConfig.WebProxyNetworkCredentialsDomain;
+
                         if (serviceConfig.EdmxVersion == Common.Constants.EdmxVersion4)
                         {
                             advancedSettingsViewModel.IgnoreUnexpectedElementsAndAttributes = serviceConfig.IgnoreUnexpectedElementsAndAttributes;
@@ -162,6 +170,14 @@ namespace Microsoft.OData.ConnectedService
             serviceConfiguration.OpenGeneratedFilesInIDE = AdvancedSettingsViewModel.OpenGeneratedFilesInIDE;
 
        
+
+            serviceConfiguration.IncludeWebProxy = AdvancedSettingsViewModel.IncludeWebProxy;
+            serviceConfiguration.Host = AdvancedSettingsViewModel.Host;
+
+            serviceConfiguration.IncludeWebProxyNetworkCredentials = AdvancedSettingsViewModel.IncludeWebProxyNetworkCredentials;
+            serviceConfiguration.WebProxyNetworkCredentialsUsername = AdvancedSettingsViewModel.NetworkCredentialsUsername;
+            serviceConfiguration.WebProxyNetworkCredentialsPassword = AdvancedSettingsViewModel.NetworkCredentialsPassword;
+            serviceConfiguration.WebProxyNetworkCredentialsDomain = AdvancedSettingsViewModel.NetworkCredentialsDomain;
 
             if (AdvancedSettingsViewModel.UseNamespacePrefix && !string.IsNullOrEmpty(AdvancedSettingsViewModel.NamespacePrefix))
             {

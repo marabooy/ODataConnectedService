@@ -74,6 +74,7 @@ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         if(this.IncludeWebProxy)
         {
             proxy = new WebProxy(this.WebProxyHost,true);
+
             if(this.IncludeWebProxyNetworkCredentials)
             {
                NetworkCredential  credentials = new NetworkCredential(this.WebProxyNetworkCredentialsUsername,
@@ -81,7 +82,7 @@ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
                this.WebProxyNetworkCredentialsDomain);
                proxy.Credentials = credentials;
             }
-        
+
         }
         context = new CodeGenerationContext(new Uri(this.MetadataDocumentUri, UriKind.Absolute),proxy, this.NamespacePrefix)
         {
@@ -1150,6 +1151,7 @@ public class CodeGenerationContext
             try
             {
                 HttpWebRequest webRequest = requestCreator.Create(metadataUri);
+
                 if(proxy!=null)
                 {
                     webRequest.Proxy= proxy;

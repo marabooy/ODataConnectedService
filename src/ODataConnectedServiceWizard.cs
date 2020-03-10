@@ -96,12 +96,13 @@ namespace Microsoft.OData.ConnectedService
 
 
                         advancedSettingsViewModel.IncludeWebProxy = serviceConfig.IncludeWebProxy;
-                        advancedSettingsViewModel.Host = serviceConfig.Host;
+                        advancedSettingsViewModel.Host = serviceConfig.WebProxyHost;
 
                         advancedSettingsViewModel.IncludeWebProxyNetworkCredentials = serviceConfig.IncludeWebProxyNetworkCredentials;
-                        advancedSettingsViewModel.NetworkCredentialsUsername = serviceConfig.WebProxyNetworkCredentialsUsername;
-                        advancedSettingsViewModel.NetworkCredentialsPassword = serviceConfig.WebProxyNetworkCredentialsPassword;
-                        advancedSettingsViewModel.NetworkCredentialsDomain = serviceConfig.WebProxyNetworkCredentialsDomain;
+
+                        advancedSettingsViewModel.WebProxyNetworkCredentialsUsername = serviceConfig.WebProxyNetworkCredentialsUsername;
+                        advancedSettingsViewModel.WebProxyNetworkCredentialsPassword = serviceConfig.WebProxyNetworkCredentialsPassword;
+                        advancedSettingsViewModel.WebProxyNetworkCredentialsDomain = serviceConfig.WebProxyNetworkCredentialsDomain;
 
                         if (serviceConfig.EdmxVersion == Common.Constants.EdmxVersion4)
                         {
@@ -172,12 +173,13 @@ namespace Microsoft.OData.ConnectedService
        
 
             serviceConfiguration.IncludeWebProxy = AdvancedSettingsViewModel.IncludeWebProxy;
-            serviceConfiguration.Host = AdvancedSettingsViewModel.Host;
+            serviceConfiguration.WebProxyHost = AdvancedSettingsViewModel.Host;
 
             serviceConfiguration.IncludeWebProxyNetworkCredentials = AdvancedSettingsViewModel.IncludeWebProxyNetworkCredentials;
-            serviceConfiguration.WebProxyNetworkCredentialsUsername = AdvancedSettingsViewModel.NetworkCredentialsUsername;
-            serviceConfiguration.WebProxyNetworkCredentialsPassword = AdvancedSettingsViewModel.NetworkCredentialsPassword;
-            serviceConfiguration.WebProxyNetworkCredentialsDomain = AdvancedSettingsViewModel.NetworkCredentialsDomain;
+
+            serviceConfiguration.WebProxyNetworkCredentialsUsername = AdvancedSettingsViewModel.WebProxyNetworkCredentialsUsername;
+            serviceConfiguration.WebProxyNetworkCredentialsPassword = AdvancedSettingsViewModel.WebProxyNetworkCredentialsPassword;
+            serviceConfiguration.WebProxyNetworkCredentialsDomain = AdvancedSettingsViewModel.WebProxyNetworkCredentialsDomain;
 
             if (AdvancedSettingsViewModel.UseNamespacePrefix && !string.IsNullOrEmpty(AdvancedSettingsViewModel.NamespacePrefix))
             {

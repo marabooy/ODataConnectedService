@@ -27,10 +27,10 @@ namespace Microsoft.OData.ConnectedService.ViewModels
 
         public bool IncludeWebProxyNetworkCredentials { get; set; }
 
-        public string NetworkCredentialsUsername { get; set; }
-        public string NetworkCredentialsPassword{ get; set; }
+        public string WebProxyNetworkCredentialsUsername { get; set; }
+        public string WebProxyNetworkCredentialsPassword{ get; set; }
 
-        public string NetworkCredentialsDomain { get; set; }
+        public string WebProxyNetworkCredentialsDomain { get; set; }
 
         public AdvancedSettingsViewModel() : base()
         {
@@ -74,9 +74,9 @@ namespace Microsoft.OData.ConnectedService.ViewModels
             this.OpenGeneratedFilesInIDE = false;
             Host = null;
             IncludeWebProxyNetworkCredentials = false;
-            NetworkCredentialsUsername = null;
-            NetworkCredentialsDomain = null;
-            NetworkCredentialsPassword = null;
+            WebProxyNetworkCredentialsUsername = null;
+            WebProxyNetworkCredentialsDomain = null;
+            WebProxyNetworkCredentialsPassword = null;
         }
     }
 }

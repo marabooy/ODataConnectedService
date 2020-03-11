@@ -23,7 +23,7 @@ namespace Microsoft.OData.ConnectedService.ViewModels
 
         public bool IncludeWebProxy { get; set; }
 
-        public string Host { get; set; }
+        public string WebProxyHost { get; set; }
 
         public bool IncludeWebProxyNetworkCredentials { get; set; }
 
@@ -72,11 +72,7 @@ namespace Microsoft.OData.ConnectedService.ViewModels
             this.IncludeWebProxy = false;
             MakeTypesInternal = false;
             this.OpenGeneratedFilesInIDE = false;
-            Host = null;
-            IncludeWebProxyNetworkCredentials = false;
-            WebProxyNetworkCredentialsUsername = null;
-            WebProxyNetworkCredentialsDomain = null;
-            WebProxyNetworkCredentialsPassword = null;
+
         }
     }
 }

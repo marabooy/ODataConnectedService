@@ -96,13 +96,20 @@ namespace Microsoft.OData.ConnectedService
 
 
                         advancedSettingsViewModel.IncludeWebProxy = serviceConfig.IncludeWebProxy;
-                        advancedSettingsViewModel.Host = serviceConfig.WebProxyHost;
+                        advancedSettingsViewModel.WebProxyHost = serviceConfig.WebProxyHost;
 
                         advancedSettingsViewModel.IncludeWebProxyNetworkCredentials = serviceConfig.IncludeWebProxyNetworkCredentials;
+<<<<<<< HEAD
 
                         advancedSettingsViewModel.WebProxyNetworkCredentialsUsername = serviceConfig.WebProxyNetworkCredentialsUsername;
                         advancedSettingsViewModel.WebProxyNetworkCredentialsPassword = serviceConfig.WebProxyNetworkCredentialsPassword;
+=======
+>>>>>>> remove username and pass from the written data
                         advancedSettingsViewModel.WebProxyNetworkCredentialsDomain = serviceConfig.WebProxyNetworkCredentialsDomain;
+
+                        // don't accept any credentials from the restored settings
+                        advancedSettingsViewModel.WebProxyNetworkCredentialsUsername = null;
+                        advancedSettingsViewModel.WebProxyNetworkCredentialsPassword = null;
 
                         if (serviceConfig.EdmxVersion == Common.Constants.EdmxVersion4)
                         {
@@ -173,7 +180,7 @@ namespace Microsoft.OData.ConnectedService
        
 
             serviceConfiguration.IncludeWebProxy = AdvancedSettingsViewModel.IncludeWebProxy;
-            serviceConfiguration.WebProxyHost = AdvancedSettingsViewModel.Host;
+            serviceConfiguration.WebProxyHost = AdvancedSettingsViewModel.WebProxyHost;
 
             serviceConfiguration.IncludeWebProxyNetworkCredentials = AdvancedSettingsViewModel.IncludeWebProxyNetworkCredentials;
 

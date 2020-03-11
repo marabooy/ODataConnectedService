@@ -64,7 +64,7 @@
                     <StackPanel Orientation="Vertical" Margin=" 0, 0, 0,0" >
                         <TextBlock x:Name="HostLabel" Text="Enter the webproxy host with the port (e.g. http://localhost:8080):"
                            HorizontalAlignment="Left" Margin="0, 0, 5, 0"/>
-                        <TextBox x:Name="Host" Text="{Binding Host}"
+                        <TextBox x:Name="WebProxyHost" Text="{Binding WebProxyHost}"
                              HorizontalAlignment="Left" TextWrapping="Wrap" Width="300" Margin="0, 0, 0, 0"/>
                     </StackPanel>
                     <CheckBox x:Name="IncludeWebProxyNetworkCredentials" Content="Include Network credentials" IsChecked="{Binding IncludeWebProxyNetworkCredentials}"
@@ -72,19 +72,19 @@
                     <StackPanel Orientation="Vertical"
                         Visibility="{Binding Path=IsChecked, ElementName=IncludeWebProxyNetworkCredentials, Converter={StaticResource BooleanToVisibilityConverter}}" Margin="20, 0, 0, 0">
 
-                        <TextBlock x:Name="NetworkCredentialsUsernameLabel" Text="Username:"
+                        <TextBlock x:Name="WebProxyNetworkCredentialsUsernameLabel" Text="Username:"
                            HorizontalAlignment="Left" Margin="0, 10, 0, 0"/>
-                        <TextBox x:Name="NetworkCredentialsUsername" Text="{Binding NetworkCredentialsUsername}"
-                             HorizontalAlignment="Left" TextWrapping="Wrap" Width="300" Margin="0, 5, 0, 0"/>
-                        
-                        <TextBlock x:Name="NetworkCredentialsPasswordLabel" Text="Password:"
-                           HorizontalAlignment="Left" Margin="0, 10, 0, 0"/>
-                        <TextBox x:Name="NetworkCredentialsPassword" Text="{Binding NetworkCredentialsPassword}"
+                        <TextBox x:Name="WebProxyNetworkCredentialsUsername" Text="{Binding WebProxyNetworkCredentialsUsername}"
                              HorizontalAlignment="Left" TextWrapping="Wrap" Width="300" Margin="0, 5, 0, 0"/>
 
-                        <TextBlock x:Name="NetworkCredentialsDomainLabel" Text="Domain:"
+                        <TextBlock x:Name="WebProxyNetworkCredentialsPasswordLabel" Text="Password:"
                            HorizontalAlignment="Left" Margin="0, 10, 0, 0"/>
-                        <TextBox x:Name="NetworkCredentialsDomain" Text="{Binding NetworkCredentialsDomain}"
+                        <TextBox x:Name="WebProxyNetworkCredentialsPassword" Text="{Binding WebProxyNetworkCredentialsPassword}"
+                             HorizontalAlignment="Left" TextWrapping="Wrap" Width="300" Margin="0, 5, 0, 0"/>
+
+                        <TextBlock x:Name="WebProxyNetworkCredentialsDomainLabel" Text="Domain:"
+                           HorizontalAlignment="Left" Margin="0, 10, 0, 0"/>
+                        <TextBox x:Name="WebProxyNetworkCredentialsDomain" Text="{Binding WebProxyNetworkCredentialsDomain}"
                              HorizontalAlignment="Left" TextWrapping="Wrap" Width="300" Margin="0, 5, 0, 0"/>
 
                     </StackPanel>

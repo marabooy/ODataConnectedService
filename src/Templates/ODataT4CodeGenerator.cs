@@ -74,10 +74,7 @@ THE SOFTWARE IS PROVIDED *AS IS*, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
         if(this.IncludeWebProxy)
         {
             proxy = new WebProxy(this.WebProxyHost,true);
-<<<<<<< HEAD
 
-=======
->>>>>>> remove username and pass from the written data
             if(this.IncludeWebProxyNetworkCredentials)
             {
                NetworkCredential  credentials = new NetworkCredential(this.WebProxyNetworkCredentialsUsername,
@@ -1159,7 +1156,6 @@ public class CodeGenerationContext
                 {
                     webRequest.Proxy= proxy;
                 }
-                 webRequest.ServerCertificateValidationCallback = delegate { return true; };
                 WebResponse webResponse = webRequest.GetResponse();
                 metadataStream = webResponse.GetResponseStream();
             }

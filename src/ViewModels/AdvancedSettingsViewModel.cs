@@ -21,16 +21,6 @@ namespace Microsoft.OData.ConnectedService.ViewModels
         public bool OpenGeneratedFilesInIDE { get; set; }
 
 
-        public bool IncludeWebProxy { get; set; }
-
-        public string WebProxyHost { get; set; }
-
-        public bool IncludeWebProxyNetworkCredentials { get; set; }
-
-        public string WebProxyNetworkCredentialsUsername { get; set; }
-        public string WebProxyNetworkCredentialsPassword{ get; set; }
-
-        public string WebProxyNetworkCredentialsDomain { get; set; }
 
         public AdvancedSettingsViewModel() : base()
         {
@@ -69,9 +59,9 @@ namespace Microsoft.OData.ConnectedService.ViewModels
             this.EnableNamingAlias = false;
             this.GeneratedFileName = Common.Constants.DefaultReferenceFileName;
             this.IncludeT4File = false;
-            this.IncludeWebProxy = false;
             MakeTypesInternal = false;
             this.OpenGeneratedFilesInIDE = false;
+
 
         }
     }

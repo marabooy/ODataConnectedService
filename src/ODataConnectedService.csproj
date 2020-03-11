@@ -203,7 +203,11 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="Templates\ODataT4CodeGenerator.ttinclude" />
+    <Content Include="Templates\ODataT4CodeGenerator.ttinclude">
+      <None Include="Templates\ODataT4CodeGenerator.ttinclude" />
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <IncludeInVSIX>true</IncludeInVSIX>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

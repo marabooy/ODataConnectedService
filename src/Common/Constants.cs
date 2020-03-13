@@ -37,7 +37,6 @@ namespace Microsoft.OData.ConnectedService.Common
 
         public const string DefaultReferenceFileName = "Reference";
         public const string DefaultServiceName = "OData Service";
-
         public static string[] V3NuGetPackages = new string[]
         {
             V3ClientNuGetPackage,

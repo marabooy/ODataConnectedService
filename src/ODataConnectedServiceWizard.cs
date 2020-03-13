@@ -21,6 +21,7 @@ namespace Microsoft.OData.ConnectedService
 
         public ConnectedServiceProviderContext Context { get; set; }
 
+
         public ODataConnectedServiceInstance ServiceInstance
         {
             get
@@ -59,8 +60,25 @@ namespace Microsoft.OData.ConnectedService
                 ConfigODataEndpointViewModel.Endpoint = serviceConfig.Endpoint;
                 ConfigODataEndpointViewModel.EdmxVersion = serviceConfig.EdmxVersion;
                 ConfigODataEndpointViewModel.ServiceName = serviceConfig.ServiceName;
-                var configODataEndpoint = (ConfigODataEndpointViewModel.View as ConfigODataEndpoint);
-                configODataEndpoint.IsEnabled = false;
+          
+
+                ConfigODataEndpointViewModel.PageEntering += (sender, args) =>
+                {
+                    var configOdataViewModel = sender as ConfigODataEndpointViewModel;
+                    if (configOdataViewModel != null)
+                    {
+                        configOdataViewModel.IncludeWebProxy = serviceConfig.IncludeWebProxy;
+                        configOdataViewModel.WebProxyHost = serviceConfig.WebProxyHost;
+
+                        configOdataViewModel.IncludeWebProxyNetworkCredentials = serviceConfig.IncludeWebProxyNetworkCredentials;
+                        configOdataViewModel.WebProxyNetworkCredentialsDomain = serviceConfig.WebProxyNetworkCredentialsDomain;
+
+                       // don't accept any credentials from the restored settings
+                        configOdataViewModel.WebProxyNetworkCredentialsUsername = null;
+                        configOdataViewModel.WebProxyNetworkCredentialsPassword = null;
+                    }
+                };
+
 
                 //Restore the advanced settings to UI elements.
                 AdvancedSettingsViewModel.PageEntering += (sender, args) =>
@@ -75,6 +93,7 @@ namespace Microsoft.OData.ConnectedService
                         advancedSettingsViewModel.UseNamespacePrefix = serviceConfig.UseNameSpacePrefix;
                         advancedSettingsViewModel.NamespacePrefix = serviceConfig.NamespacePrefix;
                         advancedSettingsViewModel.UseDataServiceCollection = serviceConfig.UseDataServiceCollection;
+
 
                         if (serviceConfig.EdmxVersion == Common.Constants.EdmxVersion4)
                         {
@@ -129,11 +148,21 @@ namespace Microsoft.OData.ConnectedService
             serviceConfiguration.ServiceName = ConfigODataEndpointViewModel.ServiceName;
             serviceConfiguration.Endpoint = ConfigODataEndpointViewModel.Endpoint;
             serviceConfiguration.EdmxVersion = ConfigODataEndpointViewModel.EdmxVersion;
+            serviceConfiguration.IncludeWebProxy = ConfigODataEndpointViewModel.IncludeWebProxy;
+            serviceConfiguration.WebProxyHost = ConfigODataEndpointViewModel.WebProxyHost;
+            serviceConfiguration.IncludeWebProxyNetworkCredentials = ConfigODataEndpointViewModel.IncludeWebProxyNetworkCredentials;
+            serviceConfiguration.WebProxyNetworkCredentialsUsername = ConfigODataEndpointViewModel.WebProxyNetworkCredentialsUsername;
+            serviceConfiguration.WebProxyNetworkCredentialsPassword = ConfigODataEndpointViewModel.WebProxyNetworkCredentialsPassword;
+            serviceConfiguration.WebProxyNetworkCredentialsDomain = ConfigODataEndpointViewModel.WebProxyNetworkCredentialsDomain;
+
             serviceConfiguration.UseDataServiceCollection = AdvancedSettingsViewModel.UseDataServiceCollection;
             serviceConfiguration.GeneratedFileNamePrefix = AdvancedSettingsViewModel.GeneratedFileName;
             serviceConfiguration.UseNameSpacePrefix = AdvancedSettingsViewModel.UseNamespacePrefix;
             serviceConfiguration.MakeTypesInternal = AdvancedSettingsViewModel.MakeTypesInternal;
             serviceConfiguration.OpenGeneratedFilesInIDE = AdvancedSettingsViewModel.OpenGeneratedFilesInIDE;
+
+       
+
             if (AdvancedSettingsViewModel.UseNamespacePrefix && !string.IsNullOrEmpty(AdvancedSettingsViewModel.NamespacePrefix))
             {
                 serviceConfiguration.NamespacePrefix = AdvancedSettingsViewModel.NamespacePrefix;

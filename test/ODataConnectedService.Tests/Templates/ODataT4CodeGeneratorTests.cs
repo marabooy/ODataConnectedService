@@ -25,6 +25,7 @@ namespace ODataConnectedService.Tests
     using System.Text.RegularExpressions;
     using Microsoft.OData.ConnectedService.Templates;
     using Microsoft.OData.Client;
+    using System.Net;
 
     [TestClass]
     public class ODataT4CodeGeneratorTests
@@ -405,7 +406,9 @@ namespace ODataConnectedService.Tests
             ODataT4CodeGeneratorTestDescriptors.ValidateEdmx(TempFilePath);
         }
 
-        private static string CodeGenWithT4Template(string edmx, string namespacePrefix, bool isCSharp, bool useDataServiceCollection, bool enableNamingAlias = false, bool ignoreUnexpectedElementsAndAttributes = false, Func<Uri, XmlReader> getReferencedModelReaderFunc = null, bool appendDSCSuffix = false, string TempFilePath = null)
+     
+
+        private static string CodeGenWithT4Template(string edmx, string namespacePrefix, bool isCSharp, bool useDataServiceCollection, bool enableNamingAlias = false, bool ignoreUnexpectedElementsAndAttributes = false, Func<Uri,WebProxy, XmlReader> getReferencedModelReaderFunc = null, bool appendDSCSuffix = false, string TempFilePath = null)
         {
             if (useDataServiceCollection
                 && appendDSCSuffix) // hack now

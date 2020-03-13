@@ -49,6 +49,10 @@ namespace Microsoft.OData.ConnectedService.CodeGeneration
             {
                 await AddGeneratedCSharpCodeAsync();
             }
+            // Since all the code is generated make sure we don't write the username and password for the network credentials
+            this.ServiceConfiguration.WebProxyNetworkCredentialsUsername = null;
+            this.ServiceConfiguration.WebProxyNetworkCredentialsPassword = null;
+
         }
 
         private async Task AddT4FileAsync()
@@ -87,6 +91,13 @@ namespace Microsoft.OData.ConnectedService.CodeGeneration
             t4CodeGenerator.EnableNamingAlias = this.ServiceConfiguration.EnableNamingAlias;
             t4CodeGenerator.NamespacePrefix = this.ServiceConfiguration.NamespacePrefix;
             t4CodeGenerator.MakeTypesInternal = ServiceConfiguration.MakeTypesInternal;
+
+            t4CodeGenerator.IncludeWebProxy = ServiceConfiguration.IncludeWebProxy;
+            t4CodeGenerator.WebProxyHost = ServiceConfiguration.WebProxyHost;
+            t4CodeGenerator.IncludeWebProxyNetworkCredentials = ServiceConfiguration.IncludeWebProxyNetworkCredentials;
+            t4CodeGenerator.WebProxyNetworkCredentialsUsername = ServiceConfiguration.WebProxyNetworkCredentialsUsername;
+            t4CodeGenerator.WebProxyNetworkCredentialsPassword = ServiceConfiguration.WebProxyNetworkCredentialsPassword;
+            t4CodeGenerator.WebProxyNetworkCredentialsDomain = ServiceConfiguration.WebProxyNetworkCredentialsDomain;
 
             string tempFile = Path.GetTempFileName();
 

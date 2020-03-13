@@ -20,6 +20,7 @@ namespace Microsoft.OData.ConnectedService.ViewModels
         public bool MakeTypesInternal { get; set; }
         public bool OpenGeneratedFilesInIDE { get; set; }
 
+
         public AdvancedSettingsViewModel() : base()
         {
             this.Title = "Settings";
@@ -59,6 +60,7 @@ namespace Microsoft.OData.ConnectedService.ViewModels
             this.IncludeT4File = false;
             MakeTypesInternal = false;
             this.OpenGeneratedFilesInIDE = false;
+          
         }
     }
 }

@@ -23,6 +23,20 @@ namespace Microsoft.OData.ConnectedService.ViewModels
         public string ServiceName { get; set; }
         public Version EdmxVersion { get; set; }
         public string MetadataTempPath { get; set; }
+
+        public bool IncludeWebProxy { get; set; }
+
+        public string WebProxyHost { get; set; }
+
+        public bool IncludeWebProxyNetworkCredentials { get; set; }
+
+        public string WebProxyNetworkCredentialsUsername { get; set; }
+        public string WebProxyNetworkCredentialsPassword { get; set; }
+
+        public string WebProxyNetworkCredentialsDomain { get; set; }
+
+        public event EventHandler<EventArgs> PageEntering;
+
         public UserSettings UserSettings
         {
             get { return this.userSettings; }
@@ -33,10 +47,25 @@ namespace Microsoft.OData.ConnectedService.ViewModels
             this.Title = "Configure endpoint";
             this.Description = "Enter or choose an OData service endpoint to begin";
             this.Legend = "Endpoint";
-            this.View = new ConfigODataEndpoint();
-            this.ServiceName = Constants.DefaultServiceName;
-            this.View.DataContext = this;
             this.userSettings = userSettings;
+
+        }
+
+        public override async Task OnPageEnteringAsync(WizardEnteringArgs args)
+        {
+            await base.OnPageEnteringAsync(args);
+            this.View = new ConfigODataEndpoint();
+            this.ResetDataContext();
+            this.View.DataContext = this;
+            if (PageEntering != null)
+            {
+                this.PageEntering(this, EventArgs.Empty);
+            }
+        }
+
+        private void ResetDataContext()
+        {
+            this.ServiceName = Constants.DefaultServiceName;
         }
 
         public override Task<PageNavigationResult> OnPageLeavingAsync(WizardLeavingArgs args)
@@ -68,7 +97,7 @@ namespace Microsoft.OData.ConnectedService.ViewModels
                 throw new ArgumentNullException("OData Service Endpoint", "Please input the service endpoint");
             }
 
-            if (this.Endpoint.StartsWith("https:", StringComparison.Ordinal) 
+            if (this.Endpoint.StartsWith("https:", StringComparison.Ordinal)
                 || this.Endpoint.StartsWith("http", StringComparison.Ordinal))
             {
                 if (!this.Endpoint.EndsWith("$metadata", StringComparison.Ordinal))
@@ -77,11 +106,25 @@ namespace Microsoft.OData.ConnectedService.ViewModels
                 }
             }
 
+
+
             // Set up XML secure resolver
             XmlUrlResolver xmlUrlResolver = new XmlUrlResolver()
             {
                 Credentials = CredentialCache.DefaultNetworkCredentials
+
             };
+
+            if (IncludeWebProxy)
+            {
+                WebProxy proxy = new WebProxy(WebProxyHost);
+                if (IncludeWebProxyNetworkCredentials)
+                {
+                    proxy.Credentials = new NetworkCredential(WebProxyNetworkCredentialsUsername, WebProxyNetworkCredentialsPassword, WebProxyNetworkCredentialsDomain);
+                }
+
+                xmlUrlResolver.Proxy = proxy;
+            }
 
             PermissionSet permissionSet = new PermissionSet(System.Security.Permissions.PermissionState.Unrestricted);
 

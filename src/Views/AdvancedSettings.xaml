@@ -11,7 +11,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="500">
     <StackPanel>
-        <StackPanel x:Name="SettingsPanel" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="125">
+        <StackPanel x:Name="SettingsPanel" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top" Height="150">
             <TextBlock x:Name="ReferenceFileNameLabel" Text="Enter the file name (without extension):"
                            HorizontalAlignment="Left" Margin="0, 5, 0, 0"/>
             <TextBox x:Name="ReferenceFileName" Text="{Binding GeneratedFileName}"
@@ -53,6 +53,7 @@
                 <CheckBox x:Name="OpenGeneratedFilesInIDE" Content="Open generated files in the IDE when generation completes." IsChecked="{Binding OpenGeneratedFilesInIDE}"
                     HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0, 5"/>
             </StackPanel>
+
         </StackPanel>
     </StackPanel>
 </UserControl>
